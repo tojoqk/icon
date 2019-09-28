@@ -1,3 +1,3 @@
 icon
 ====
-![My icon](/icon.png)
+![My icon](/tojoqk.png)

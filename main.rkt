@@ -34,5 +34,5 @@
   (rotate 270 (create (* 311 4) move-circle)))
 
 (save-image result
-            "icon.png")
+            "tojoqk.png")
 
