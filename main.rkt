@@ -2,7 +2,7 @@
 (require 2htdp/image)
 
 (define size 512)
-(define scale 0.4)
+(define scale 0.35)
 (define background (rectangle size size "solid" "black"))
 (define velocity 1)
 
