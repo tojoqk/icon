@@ -31,7 +31,8 @@
     (f img i)))
 
 (define result
-  (rotate 270 (create (* 311 2) move-circle)))
+  (rotate 270 (create (* 311 4) move-circle)))
 
 (save-image result
             "tojoqk.png")
+result
