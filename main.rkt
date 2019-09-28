@@ -30,6 +30,9 @@
             ([i n])
     (f img i)))
 
-(save-image (rotate 270 (create (* 311 4) move-circle))
+(define result
+  (rotate 270 (create (* 311 4) move-circle)))
+
+(save-image result
             "icon.png")
 
