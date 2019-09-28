@@ -1,50 +1,35 @@
 #lang racket/base
+(require 2htdp/image)
 
-(module+ test
-  (require rackunit))
+(define size 512)
+(define scale 0.4)
+(define background (rectangle size size "solid" "black"))
+(define velocity 1)
 
-;; Notice
-;; To install (from within the package directory):
-;;   $ raco pkg install
-;; To install (once uploaded to pkgs.racket-lang.org):
-;;   $ raco pkg install <<name>>
-;; To uninstall:
-;;   $ raco pkg remove <<name>>
-;; To view documentation:
-;;   $ raco docs <<name>>
-;;
-;; For your convenience, we have included LICENSE-MIT and LICENSE-APACHE files.
-;; If you would prefer to use a different license, replace those files with the
-;; desired license.
-;;
-;; Some users like to add a `private/` directory, place auxiliary files there,
-;; and require them in `main.rkt`.
-;;
-;; See the current version of the racket style guide here:
-;; http://docs.racket-lang.org/style/index.html
+(define (move-circle img i)
+  (let ([t (* velocity i)])
+    (place-image
+     (circle (* (/ size (/ 4 scale)))
+             10
+             "red")
+     (+ (quotient size 2)
+        (* (/ size (/ 1.0 scale))
+           (* 0.8 (cos (* 0.02 t)))))
+     (+ (quotient size 2)
+        (* (/ size (/ 2.0 scale))
+           (+ (* 1.2 (sin (* 0.01 t)))
+              (* 0.5 (sin (* 0.02 t)))
+              (* 0.4 (sin (* -0.03 t)))
+              (* -0.4 (sin (* -0.03 t)))
+              (* 0.2 (sin (* -0.06 t)))
+              (* -0.3 (sin (* 0.1 t))))))
+     img)))
 
-;; Code here
+(define (create n f)
+  (for/fold ([img background])
+            ([i n])
+    (f img i)))
 
+(save-image (rotate 270 (create (* 311 4) move-circle))
+            "icon.png")
 
-
-(module+ test
-  ;; Any code in this `test` submodule runs when this file is run using DrRacket
-  ;; or with `raco test`. The code here does not run when this file is
-  ;; required by another module.
-
-  (check-equal? (+ 2 2) 4))
-
-(module+ main
-  ;; (Optional) main submodule. Put code here if you need it to be executed when
-  ;; this file is run using DrRacket or the `racket` executable.  The code here
-  ;; does not run when this file is required by another module. Documentation:
-  ;; http://docs.racket-lang.org/guide/Module_Syntax.html#%28part._main-and-test%29
-
-  (require racket/cmdline)
-  (define who (box "world"))
-  (command-line
-    #:program "my-program"
-    #:once-each
-    [("-n" "--name") name "Who to say hello to" (set-box! who name)]
-    #:args ()
-    (printf "hello ~a~n" (unbox who))))
