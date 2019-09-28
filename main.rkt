@@ -12,7 +12,7 @@
      (circle (* (/ size (/ 4 scale)))
              10
              "red")
-     (+ (/ size 1.85)
+     (+ (/ size 1.78)
         (* (/ size (/ 1.0 scale))
            (* 0.8 (cos (* 0.02 t)))))
      (+ (quotient size 2)
