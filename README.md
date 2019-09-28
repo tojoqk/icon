@@ -1,3 +1,3 @@
 icon
 ====
-README text here.
+![My icon](/icon.png)
