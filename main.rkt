@@ -11,7 +11,7 @@
     (place-image
      (circle (* (/ size (/ 4 scale)))
              10
-             "green")
+             "blue")
      (+ (/ size 1.8)
         (* (/ size (/ 1.0 scale))
            (* 0.8 (cos (* 0.02 t)))))
@@ -31,10 +31,7 @@
     (f img i)))
 
 (define result
-  (rotate 270 (create (* 311 4) move-circle)))
+  (rotate 270 (create (* 311 2) move-circle)))
 
-(overlay (circle 256 "outline" "white")
-         result)
 (save-image result
             "tojoqk.png")
-
