@@ -10,19 +10,20 @@
   (let ([t (* velocity i)])
     (place-image
      (circle (* (/ size (/ 4 scale)))
-             10
-             "blue")
+             5
+             (case (modulo i 1)
+               [(0) "blue"]))
      (+ (/ size 1.8)
         (* (/ size (/ 1.0 scale))
            (* 0.8 (cos (* 0.02 t)))))
      (+ (quotient size 2)
         (* (/ size (/ 2.0 scale))
-           (+ (* 1.2 (sin (* 0.01 t)))
-              (* 0.5 (sin (* 0.02 t)))
-              (* 0.4 (sin (* -0.03 t)))
-              (* -0.4 (sin (* -0.03 t)))
-              (* 0.2 (sin (* -0.06 t)))
-              (* -0.3 (sin (* 0.1 t))))))
+           (+ (* 1.3 (sin (* 0.01 t)))
+              (* 0.47 (sin (* 0.02 t)))
+              (* 0.39 (sin (* -0.03 t)))
+              (* -0.20 (sin (* -0.03 t)))
+              (* 0.29 (sin (* -0.06 t)))
+              (* -0.44 (sin (* 0.1 t))))))
      img)))
 
 (define (create n f)
@@ -31,7 +32,7 @@
     (f img i)))
 
 (define result
-  (rotate 270 (create (* 311 4) move-circle)))
+  (rotate 270 (create (* 311 6) move-circle)))
 
 (save-image result
             "tojoqk.png")
