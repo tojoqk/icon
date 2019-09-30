@@ -3,7 +3,7 @@
 
 (define size 512)
 (define scale 0.35)
-(define background (rectangle size size "solid" "black"))
+(define background (rectangle size size "solid" (make-color 64 64 64)))
 (define velocity 1)
 
 (define (move-circle img i)
@@ -12,7 +12,7 @@
      (circle (* (/ size (/ 4 scale)))
              5
              (case (modulo i 1)
-               [(0) "blue"]))
+               [(0) "cyan"]))
      (+ (/ size 1.8)
         (* (/ size (/ 1.0 scale))
            (* 0.8 (cos (* 0.02 t)))))
